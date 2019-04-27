@@ -17,15 +17,16 @@ ActiveRecord::Schema.define(version: 2019_04_24_153057) do
 
   create_table "restaurants", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "rating", default: 0
-    t.boolean "b10bis", default: false
-    t.integer "max_delivery_time_min", default: 1
+    t.float "rating", default: 0.0
+    t.boolean "accept10bis", default: false, null: false
+    t.integer "max_delivery_time_min"
     t.string "address"
     t.float "latitude"
     t.float "longitude"
     t.string "cuisine"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["id"], name: "index_restaurants_on_id", unique: true
   end
 
 end
