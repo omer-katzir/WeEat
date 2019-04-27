@@ -24,3 +24,6 @@
 
 # ignore local settings
 .idea/*
+
+# Ignore rubocop corrections
+.rubocop_todo.yml
