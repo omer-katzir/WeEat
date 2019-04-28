@@ -1,6 +1,5 @@
 class CreateRestaurants < ActiveRecord::Migration[6.0]
   def up
-    enable_extension 'uuid-ossp'
 
     create_table :restaurants , id: :uuid do |t|
       t.string :name, null: false

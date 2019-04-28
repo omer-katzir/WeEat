@@ -1,5 +1,6 @@
 class RestaurantsController < ApplicationController
 
+  before_action :set_restaurant, only: [:show, :update, :destroy]
   # GET /restaurants
   def index
     restaurants = Restaurant.all
@@ -8,7 +9,7 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants/:id
   def show
-    render_json(restaurant)
+    render_json(@restaurant)
   end
 
   # POST /restaurants
@@ -20,12 +21,12 @@ class RestaurantsController < ApplicationController
   # PUT /restaurants/:id
   def update
     # update! RecordInvalid exception handled in ApplicationController
-    restaurant.update!(restaurant_params)
+    @restaurant.update!(restaurant_params)
   end
 
   # DELETE /restaurants/:id
   def destroy
-    if restaurant.destroy
+    if @restaurant.destroy
       head :ok
     else
       render_json(restaurant.errors.messages, :internal_server_error)
@@ -34,8 +35,9 @@ class RestaurantsController < ApplicationController
 
   private
 
-  def restaurant
-    @restaurant ||= Restaurant.find(params[:id])
+
+  def set_restaurant
+    @restaurant = Restaurant.find(params[:id])
   end
 
   def restaurant_params
@@ -43,11 +45,4 @@ class RestaurantsController < ApplicationController
                   :max_delivery_time_min, :address,
                   :latitude, :longitude, :cuisine)
   end
-
-  def render_json(object, status = :ok)
-    render json: object, status: status
-  end
-
-
-
 end
