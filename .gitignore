@@ -27,3 +27,7 @@
 
 # Ignore rubocop corrections
 .rubocop_todo.yml
+
+# OS generated files #
+######################
+.DS_Store

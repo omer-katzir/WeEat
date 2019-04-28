@@ -8,7 +8,6 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants/:id
   def show
-    restaurant = Restaurant.find(params[:id])
     render_json(restaurant)
   end
 
@@ -20,14 +19,12 @@ class RestaurantsController < ApplicationController
 
   # PUT /restaurants/:id
   def update
-    restaurant = Restaurant.find(params[:id])
     # update! RecordInvalid exception handled in ApplicationController
     restaurant.update!(restaurant_params)
   end
 
   # DELETE /restaurants/:id
   def destroy
-    restaurant = Restaurant.find(params[:id])
     if restaurant.destroy
       head :ok
     else
@@ -36,6 +33,10 @@ class RestaurantsController < ApplicationController
   end
 
   private
+
+  def restaurant
+    @restaurant ||= Restaurant.find(params[:id])
+  end
 
   def restaurant_params
     params.permit(:name, :rating, :accept10bis,

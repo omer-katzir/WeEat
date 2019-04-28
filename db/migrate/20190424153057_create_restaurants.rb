@@ -1,10 +1,12 @@
 class CreateRestaurants < ActiveRecord::Migration[6.0]
   def up
-    create_table :restaurants do |t|
+    enable_extension 'uuid-ossp'
+
+    create_table :restaurants , id: :uuid do |t|
       t.string :name, null: false
-      t.integer :rating, default: 0
-      t.boolean :b10bis, default: false
-      t.integer :max_delivery_time_min, default: 1
+      t.float :rating, default: 0
+      t.boolean :accept10bis, null: false, default: false
+      t.integer :max_delivery_time_min
       t.string :address
       t.float :latitude
       t.float :longitude
