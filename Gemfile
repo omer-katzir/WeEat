@@ -47,3 +47,5 @@ end
 gem 'rubocop', require: false
 
 gem 'active_model_serializers', '~> 0.10.0'
+
+gem 'enumify'

@@ -16,6 +16,8 @@
 #
 
 class Restaurant < ApplicationRecord
+  enumify :cuisine, [:American, :Asian, :Bakery, :Fast_Food, :Steak, :Sushi, :Vegetarian]
+
   validates :rating, numericality: { greater_than_or_equal_to: 0,
                                      less_than_or_equal_to: 3 }
   validates :name, presence: true
