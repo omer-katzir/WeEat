@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::API
-
   rescue_from ActiveRecord::RecordInvalid, with: :unprocessable_response
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
 
@@ -16,5 +15,4 @@ class ApplicationController < ActionController::API
   def render_json(object, status = :ok)
     render json: object, status: status
   end
-
 end

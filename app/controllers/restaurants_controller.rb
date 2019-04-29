@@ -1,5 +1,4 @@
 class RestaurantsController < ApplicationController
-
   before_action :set_restaurant, only: [:show, :update, :destroy]
   # GET /restaurants
   def index
@@ -34,7 +33,6 @@ class RestaurantsController < ApplicationController
   end
 
   private
-
 
   def set_restaurant
     @restaurant = Restaurant.find(params[:id])

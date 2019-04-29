@@ -1,7 +1,26 @@
-inherit_from: .rubocop_todo.yml
-
-AllCops:   
+AllCops:
   Exclude:     
     - 'db/**/*'     
     - 'config/**/*'     
     - 'script/**/*'
+    - 'test/**/*.rb'
+    - '**/*.rake'
+    - 'lib/tasks/auto_annotate_models.rake'
+    - 'bin/**/*'
+    - 'Rakefile'
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120
+
+ClassAndModuleChildren:
+  EnforcedStyle: nested
+
+Style/SymbolArray:
+  Enabled: true
+  EnforcedStyle: brackets

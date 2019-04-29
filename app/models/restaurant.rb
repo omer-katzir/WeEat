@@ -24,13 +24,10 @@ class Restaurant < ApplicationRecord
                                     numericality: { only_integer: true,
                                                     greater_than_or_equal_to: 1,
                                                     less_than_or_equal_to: 720 }
-
-
   validates :latitude, allow_nil: true, numericality:
                                         { greater_than_or_equal_to: -90,
                                           less_than_or_equal_to: 90 }
   validates :longitude, allow_nil: true, numericality:
                                         { greater_than_or_equal_to: -180,
                                           less_than_or_equal_to: 180 }
-
 end
