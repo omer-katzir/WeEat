@@ -10,16 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_23_123408) do
+ActiveRecord::Schema.define(version: 2019_04_28_145615) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
-  create_table "restaurants", force: :cascade do |t|
+  create_table "restaurants", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
-    t.integer "rating", default: 0
-    t.boolean "b10bis", default: false
-    t.integer "max_delivery_time_min", default: 1
+    t.float "rating", default: 0.0
+    t.boolean "accept10bis", default: false, null: false
+    t.integer "max_delivery_time_min"
     t.string "address"
     t.float "latitude"
     t.float "longitude"
