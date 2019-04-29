@@ -8,6 +8,7 @@ AllCops:
     - 'lib/tasks/auto_annotate_models.rake'
     - 'bin/**/*'
     - 'Rakefile'
+    - 'vendor/**/*'
 
 Style/Documentation:
   Enabled: false
