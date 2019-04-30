@@ -16,7 +16,8 @@
 #
 
 class Restaurant < ApplicationRecord
-  enumify :cuisine, [:American, :Asian, :Bakery, :Fast_Food, :Steak, :Sushi, :Vegetarian]
+  E_CUISINES = [:American, :Asian, :Bakery, :Fast_Food, :Steak, :Sushi, :Vegetarian].freeze
+  enumify :cuisine, E_CUISINES
 
   validates :rating, numericality: { greater_than_or_equal_to: 0,
                                      less_than_or_equal_to: 3 }

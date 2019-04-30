@@ -49,3 +49,8 @@ gem 'rubocop', require: false
 gem 'active_model_serializers', '~> 0.10.0'
 
 gem 'enumify'
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.8'
+  gem 'shoulda-matchers', '~> 4.0'
+end
