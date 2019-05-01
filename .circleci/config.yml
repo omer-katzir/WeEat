@@ -10,6 +10,8 @@ jobs:
       - image: circleci/ruby:2.5.1-node
         environment:
           BUNDLER_VERSION: 2.0.1
+          PGHOST: 127.0.0.1
+          PGUSER: omer.katzir
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
