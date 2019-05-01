@@ -10,8 +10,6 @@ jobs:
       - image: circleci/ruby:2.5.1-node
         environment:
           BUNDLER_VERSION: 2.0.1
-          PGHOST: 127.0.0.1
-          PGUSER: omer.katzir
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -38,6 +36,17 @@ jobs:
             - v1-dependencies-
 
       - run:
+          name: Waiting for Postgres to be ready
+          command: |
+            for i in `seq 1 10`;
+            do
+              nc -z localhost 5432 && echo Success && exit 0
+              echo -n .
+              sleep 1
+            done
+            echo Failed waiting for Postgres && exit 1
+
+      - run:
           name: upgrade bundler
           command: |
             gem install bundler -v 2.0.1
@@ -56,12 +65,6 @@ jobs:
           name: run rubocop
           command: |
             bundle exec rubocop
-
-      - run:
-          name: Database Setup
-          command: |
-            bundle exec rake db:create
-            bundle exec rake db:structure:load
 
       - run:
           name: run espec
