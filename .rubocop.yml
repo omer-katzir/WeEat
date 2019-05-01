@@ -12,12 +12,8 @@ AllCops:
     - 'Rakefile'
     - 'vendor/**/*'
     - 'spec/fixtures/**/*'
-    - 'node_modules/**/*'
     - 'db/schema.rb'
     - 'db/seeds.rb'
-    - 'client/node_modules/**/*'
-    - 'spec/rails_helper.rb'
-    - 'spec/spec_helper.rb'
 
 Style/Documentation:
   Enabled: false
