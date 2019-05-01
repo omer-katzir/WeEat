@@ -60,3 +60,5 @@ group :test do
 end
 
 gem 'rspec_junit_formatter'
+
+gem 'faker'
