@@ -69,7 +69,7 @@ jobs:
       - run:
           name: db migrations
           command: |
-            rake db:migrate
+            bundle exec rake db:migrate
 
       - run:
           name: run espec
