@@ -67,6 +67,11 @@ jobs:
             bundle exec rubocop
 
       - run:
+          name: db migrations
+          command: |
+            rake db:migrate
+
+      - run:
           name: run espec
           command: |
             bundle exec rspec
