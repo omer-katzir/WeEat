@@ -21,7 +21,7 @@ FactoryBot.define do
   factory :restaurant do
     name { Faker::Restaurant.name }
     cuisine { Restaurant::E_CUISINES.sample }
-    accept10bis { false }
+    accept10bis { [true, false].sample }
 
     trait :with_location do
       addr = Faker::Address
