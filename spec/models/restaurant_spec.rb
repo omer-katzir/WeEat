@@ -16,7 +16,6 @@
 #
 
 require 'helpers/matcher_helper'
-require 'support/factory_bot'
 
 RSpec.describe Restaurant, type: :model do
   context 'validations' do
@@ -30,6 +29,7 @@ RSpec.describe Restaurant, type: :model do
 
   context 'defaults' do
     restaurant = FactoryBot.create(:restaurant)
+    puts "test_TEST: #{restaurant}"
     it 'has default rating of 0' do
       expect(restaurant.rating).to eq(0)
     end

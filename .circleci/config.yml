@@ -68,7 +68,7 @@ jobs:
           command: bin/rails db:schema:load --trace
 
       - run:
-          name: run espec
+          name: run rspec
           command: |
             bundle exec rspec
 
