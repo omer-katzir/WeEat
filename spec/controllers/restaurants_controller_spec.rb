@@ -13,9 +13,7 @@ RSpec.describe RestaurantsController, type: :controller do
       hash.each do |h|
         expect(h.keys).to
       end
-
     end
-
   end
   context 'check creation' do
   end
@@ -23,5 +21,4 @@ RSpec.describe RestaurantsController, type: :controller do
   end
   context 'check deleting' do
   end
-
 end
