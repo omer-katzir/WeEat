@@ -28,7 +28,7 @@ RSpec.describe Restaurant, type: :model do
   end
 
   context 'defaults' do
-    restaurant = FactoryBot.create(:restaurant, :not_accepts_10bis )
+    restaurant = FactoryBot.create(:restaurant, :not_accepts_10bis)
     puts "test_TEST: #{restaurant}"
     it 'has default rating of 0' do
       expect(restaurant.rating).to eq(0)
