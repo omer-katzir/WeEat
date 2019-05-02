@@ -14,16 +14,18 @@
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
 #
+
 require 'faker'
+
 FactoryBot.define do
-  factory :restaurant do
-    name { Faker::Restaurant.name }
-    cuisine { Restaurant::E_CUISINES.sample }
-  end
-  factory :restaurant_no_cuisine do
-    name { Faker::Restaurant.name }
-  end
-  factory :restaurant_no_name do
-    cuisine { Restaurant::E_CUISINES.sample }
+  factory :restaurant, traits: [:name, :cuisine] do
+    trait :name do
+      name { Faker::Restaurant.name }
+    end
+    trait :cuisine do
+      cuisine { Restaurant::E_CUISINES.sample }
+    end
+    factory :restaurant_no_cuisine, traits: [:name]
+    factory :restaurant_no_name, traits: [:cuisine]
   end
 end

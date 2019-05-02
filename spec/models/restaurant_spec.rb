@@ -15,6 +15,9 @@
 #  updated_at            :datetime         not null
 #
 
+require 'helpers/matcher_helper'
+require 'support/factory_bot'
+
 RSpec.describe Restaurant, type: :model do
   context 'validations' do
     it { is_expected.to validate_presence_of(:name) }

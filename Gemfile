@@ -50,15 +50,10 @@ gem 'active_model_serializers', '~> 0.10.0'
 
 gem 'enumify'
 
-group :development, :test do
-  gem 'rspec-rails', '~> 3.8'
-  gem 'shoulda-matchers', '~> 4.0'
-end
-
 group :test do
   gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'rspec-rails', '~> 3.8'
+  gem 'rspec_junit_formatter'
+  gem 'shoulda-matchers', '~> 4.0'
 end
-
-gem 'rspec_junit_formatter'
-
-gem 'faker'

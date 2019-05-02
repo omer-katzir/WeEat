@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: restaurants
@@ -15,7 +13,6 @@
 #  rating                :float            default(0.0)
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
-# frozen_string_literal: true
 
 class Restaurant < ApplicationRecord
   E_CUISINES = [:American, :Asian, :Bakery, :Fast_Food, :Steak, :Sushi, :Vegetarian].freeze
