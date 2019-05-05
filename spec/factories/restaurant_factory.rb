@@ -49,7 +49,6 @@ FactoryBot.define do
       max_delivery_time_min { 720 }
       accepts_10bis { false }
     end
-
     trait :invalid_record do
       r = Faker::Number.within(0..2)
       case r

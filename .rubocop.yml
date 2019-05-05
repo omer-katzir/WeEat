@@ -31,7 +31,6 @@ Style/SymbolArray:
   Enabled: true
   EnforcedStyle: brackets
 
-
 Metrics/AbcSize:
   Max: 45
 
