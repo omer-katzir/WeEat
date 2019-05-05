@@ -1,7 +1,9 @@
 AllCops:
-  Exclude:     
-    - 'db/**/*'     
-    - 'config/**/*'     
+  DisplayCopNames: true
+  TargetRubyVersion: 2.5.1
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
     - 'script/**/*'
     - 'test/**/*.rb'
     - '**/*.rake'
@@ -9,6 +11,9 @@ AllCops:
     - 'bin/**/*'
     - 'Rakefile'
     - 'vendor/**/*'
+    - 'spec/fixtures/**/*'
+    - 'db/schema.rb'
+    - 'db/seeds.rb'
 
 Style/Documentation:
   Enabled: false
@@ -25,3 +30,36 @@ ClassAndModuleChildren:
 Style/SymbolArray:
   Enabled: true
   EnforcedStyle: brackets
+
+
+Metrics/AbcSize:
+  Max: 25
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    default: ()
+    "%i": ()
+    "%w": ()
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented_relative_to_receiver
+
+Metrics/MethodLength:
+  CountComments: false
+  Max: 15
+  Exclude:
+    - "spec/**/*.rb"
+
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*.rb"
+    - "config/initializers/rails_admin.rb"
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
