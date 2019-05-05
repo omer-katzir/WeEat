@@ -22,6 +22,9 @@ FactoryBot.define do
     name { Faker::Restaurant.name }
     cuisine { Restaurant::E_CUISINES.sample }
     accept10bis { [true, false].sample }
+    rating { [0.0..3.0].sample }
+    max_delivery_time_min { [1..720].sample }
+
 
     trait :with_location do
       addr = Faker::Address
@@ -36,6 +39,11 @@ FactoryBot.define do
 
     trait :not_accepts_10bis do
       accept10bis { false }
+    end
+
+    trait :rally_bad_restaurant do # ;) :P
+      rating { 0 }
+      max_delivery_time_min { 720 }
     end
   end
 end
