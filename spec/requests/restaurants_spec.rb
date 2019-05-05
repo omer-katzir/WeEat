@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe 'Restaurants', type: :request do
   before(:all) do
-    Restaurant.delete_all
     FactoryBot.create_list(:restaurant, 10)
   end
 
@@ -47,10 +46,8 @@ RSpec.describe 'Restaurants', type: :request do
   end
 
   describe 'POST /restaurants' do
-    before do
-      post '/restaurants', params: FactoryBot.attributes_for(:restaurant)
-    end
     it 'returns http success' do
+      post '/restaurants', params: FactoryBot.attributes_for(:restaurant)
       expect(response).to have_http_status(:created)
     end
 
@@ -103,10 +100,6 @@ RSpec.describe 'Restaurants', type: :request do
       delete restaurant_path(subject.id)
       expect(Restaurant.find_by(id: subject.id)).to be_nil
     end
-  end
-
-  after(:all) do
-    Restaurant.delete_all
   end
 
   private

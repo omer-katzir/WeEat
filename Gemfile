@@ -51,6 +51,7 @@ gem 'active_model_serializers', '~> 0.10.0'
 gem 'enumify'
 
 group :test do
+  gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'rspec-rails', '~> 3.8'
