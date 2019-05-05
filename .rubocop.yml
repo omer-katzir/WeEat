@@ -33,7 +33,7 @@ Style/SymbolArray:
 
 
 Metrics/AbcSize:
-  Max: 25
+  Max: 45
 
 Style/StringLiterals:
   EnforcedStyle: single_quotes

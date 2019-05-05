@@ -14,7 +14,8 @@ class RestaurantsController < ApplicationController
   # POST /restaurants
   def create
     # create! RecordInvalid exception handled in ApplicationController
-    Restaurant.create!(restaurant_params)
+    rest = Restaurant.create!(restaurant_params)
+    render_json(rest, :created)
   end
 
   # PUT /restaurants/:id
