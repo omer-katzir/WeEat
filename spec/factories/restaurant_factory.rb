@@ -20,10 +20,14 @@ require 'faker'
 FactoryBot.define do
   factory :restaurant do
     name { Faker::Restaurant.name }
-    cuisine { Restaurant::E_CUISINES.sample }
+
+    cuisine { Restaurant::CUISINES.sample }
+
     accept10bis { [true, false].sample }
+
     rating { Faker::Number.within(0.0..3.0) }
-    max_delivery_time_min { Faker::Number.within(1..720) }
+
+    max_delivery_time_min { rand(1..Restaurant::MAX_DELIVERY_TIME) }
 
     trait :with_location do
       addr = Faker::Address
@@ -48,19 +52,6 @@ FactoryBot.define do
       rating { 0 }
       max_delivery_time_min { 720 }
       accepts_10bis { false }
-    end
-    trait :invalid_record do
-      r = Faker::Number.within(0..2)
-      case r
-      when 0
-        cuisine { nil }
-      when 1
-        rating { Faker::Number.within((3.0..100_000)) }
-      when 2
-        max_delivery_time_min { Faker::Number.within(-100_000..0) }
-      else
-        name { nil }
-      end
     end
   end
 end

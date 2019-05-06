@@ -32,7 +32,7 @@ Style/SymbolArray:
   EnforcedStyle: brackets
 
 Metrics/AbcSize:
-  Max: 45
+  Max: 25
 
 Style/StringLiterals:
   EnforcedStyle: single_quotes
@@ -62,3 +62,6 @@ Metrics/BlockLength:
 
 Style/TrailingCommaInArrayLiteral:
   EnforcedStyleForMultiline: comma
+
+Naming/MethodNode:
+  enforcedStyle: snake_case

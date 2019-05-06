@@ -21,10 +21,10 @@ RSpec.describe Restaurant, type: :model do
   context 'validations' do
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_num_in_range(:rating, 0, 3) }
-    it { is_expected.to validate_num_in_range(:max_delivery_time_min, 1, 720) }
+    it { is_expected.to validate_num_in_range(:max_delivery_time_min, 1, Restaurant::MAX_DELIVERY_TIME) }
     it { is_expected.to validate_num_in_range(:latitude, -90, 90) }
     it { is_expected.to validate_num_in_range(:longitude, -180, 180) }
-    it { is_expected.to validate_inclusion_of(:cuisine).in_array(Restaurant::E_CUISINES) }
+    it { is_expected.to validate_inclusion_of(:cuisine).in_array(Restaurant::CUISINES) }
   end
 
   context 'defaults' do
