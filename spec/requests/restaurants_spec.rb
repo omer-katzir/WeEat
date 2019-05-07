@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe 'Restaurants', type: :request do
   MAX_RECORD_COUNT = 100
   RESTAURANT_ATTRIBUTES = %w(id name rating cuisine accept10bis max_delivery_time_min
-                             created_at updated_at address latitude longitude).freeze
+                             address latitude longitude).sort.freeze
+
   describe 'GET /restaurants' do
     before(:all) do
       FactoryBot.create_list(:restaurant, rand(1..MAX_RECORD_COUNT))
@@ -22,7 +23,7 @@ RSpec.describe 'Restaurants', type: :request do
     it 'contains all attributes' do
       restaurants = response_body
       restaurants.each do |restaurant|
-        expect(restaurant.keys).to match_array(RESTAURANT_ATTRIBUTES)
+        expect(restaurant.keys.sort).to include(*RESTAURANT_ATTRIBUTES)
       end
     end
   end
@@ -115,23 +116,17 @@ RSpec.describe 'Restaurants', type: :request do
   end
 
   describe 'DELETE /restaurant/:id' do
-    subject { Restaurant.all.sample }
-
     context 'valid records' do
+      let(:restaurant) { Restaurant.all.sample }
+
       before(:all) do
         FactoryBot.create_list(:restaurant, rand(1..MAX_RECORD_COUNT))
       end
 
       it 'returns http :ok' do
-        delete restaurant_path(subject.id)
+        delete restaurant_path(restaurant.id)
 
         expect(response).to have_http_status(:ok)
-      end
-
-      it 'cannot find the deleted record' do
-        delete restaurant_path(subject.id)
-
-        expect(Restaurant.find_by(id: subject.id)).to be_nil
       end
     end
 
@@ -152,8 +147,8 @@ RSpec.describe 'Restaurants', type: :request do
 
   # rubocop: disable Metrics/AbcSize
   def restaurant_attr_matcher(rest_ref, rest_sample)
-    expect(rest_ref.keys).to match_array(RESTAURANT_ATTRIBUTES)
-    expect(rest_sample.keys).to match_array(RESTAURANT_ATTRIBUTES)
+    expect(rest_ref.keys.sort).to include(*RESTAURANT_ATTRIBUTES)
+    expect(rest_sample.keys.sort).to include(*RESTAURANT_ATTRIBUTES)
     expect(rest_sample['name']).to eq(rest_ref['name'])
     expect(rest_sample['cuisine']).to eq(rest_ref['cuisine'])
     expect(rest_sample['id']).to eq(rest_ref['id'])

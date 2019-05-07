@@ -16,8 +16,7 @@
 
 class Restaurant < ApplicationRecord
   MAX_DELIVERY_TIME = 300
-  CUISINES = [:american, :asian, :bakery, :fast_food, :steak, :sushi, :vegetarian].freeze
-  enumify :cuisine, CUISINES, constant: 'e_cuisines'
+  enumify :cuisine, [:american, :asian, :bakery, :fast_food, :steak, :sushi, :vegetarian]
 
   validates :rating, numericality: { greater_than_or_equal_to: 0,
                                      less_than_or_equal_to: 3 }
