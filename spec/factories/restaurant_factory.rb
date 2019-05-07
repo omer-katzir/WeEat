@@ -20,13 +20,9 @@ require 'faker'
 FactoryBot.define do
   factory :restaurant do
     name { Faker::Restaurant.name }
-
     cuisine { Restaurant::CUISINES.sample }
-
     accept10bis { [true, false].sample }
-
     rating { Faker::Number.within(0.0..3.0) }
-
     max_delivery_time_min { rand(1..Restaurant::MAX_DELIVERY_TIME) }
 
     trait :with_location do
