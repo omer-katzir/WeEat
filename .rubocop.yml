@@ -31,7 +31,6 @@ Style/SymbolArray:
   Enabled: true
   EnforcedStyle: brackets
 
-
 Metrics/AbcSize:
   Max: 25
 
@@ -63,3 +62,6 @@ Metrics/BlockLength:
 
 Style/TrailingCommaInArrayLiteral:
   EnforcedStyleForMultiline: comma
+
+Naming/MethodNode:
+  enforcedStyle: snake_case
