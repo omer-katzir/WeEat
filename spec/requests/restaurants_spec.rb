@@ -17,11 +17,13 @@ RSpec.describe 'Restaurants', type: :request do
 
     it 'has the right restaurants count' do
       restaurants = response_body
+
       expect(restaurants.count).to eq(Restaurant.all.count)
     end
 
     it 'contains all attributes' do
       restaurants = response_body
+
       restaurants.each do |restaurant|
         expect(restaurant.keys.sort).to include(*RESTAURANT_ATTRIBUTES)
       end
@@ -107,11 +109,11 @@ RSpec.describe 'Restaurants', type: :request do
     end
 
     it 'updates the record fields' do
-      new_rest = FactoryBot.build(:restaurant, id: subject.id)
-      put restaurant_path(subject.id), params: new_rest.attributes
+      new_restaurant = FactoryBot.build(:restaurant, id: subject.id)
+      put restaurant_path(subject.id), params: new_restaurant.attributes
       rest = Restaurant.find(subject.id)
 
-      restaurant_attr_matcher(rest.attributes, new_rest.attributes)
+      restaurant_attr_matcher(rest.attributes, new_restaurant.attributes)
     end
   end
 
